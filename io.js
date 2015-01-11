@@ -8,11 +8,22 @@ var io = new SocketIO();
 
 pubsub.on('message', function(msg) {
   // we tell the client to execute 'new message'
-  io.emit('new title', {
+  /*io.emit('new title', {
     message: msg
   });
+  */
+
+  
+  io.emit('new title', msg);
 
   console.log('pubsub message received' , msg);
+  console.log('pubsub received Article title' , msg.title);
+  console.log('pubsub recieved Artile body', msg.body);
+  console.log('pubsub recieved Artile tags', msg.tags);
+
+
+
+
 });
 
 

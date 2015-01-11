@@ -101,7 +101,7 @@ module.exports = function (app, passport) {
         console.log("title is " + body.title);
         console.log("body is " + body.body);
 
-     pubsub.emit('message', body.title);
+     pubsub.emit('message', body);
      next();
    },articles.create)
 
