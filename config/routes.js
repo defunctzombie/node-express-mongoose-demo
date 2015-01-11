@@ -12,6 +12,7 @@ var comments = require('comments');
 var tags = require('tags');
 var auth = require('./middlewares/authorization');
 var pubsub = require('../lib/pubsub');
+var request = require('request');
 
 /**
  * Route middlewares
@@ -101,10 +102,38 @@ module.exports = function (app, passport) {
         console.log("title is " + body.title);
         console.log("body is " + body.body);
 
-     pubsub.emit('message', body);
+     //pubsub.emit('message', body);
+     //postToCloud(body);
+
+     var id = 'ns2';
+  var type = 'new title';
+
+      request({ url: "http://iocloud.localtunnel.me/update",
+            method: "POST",
+            followRedirect: true,
+            timeout: 5000,
+            json: {
+              "id": id,
+              "type": type,
+              "payload": body
+            }}, function(err, response, body2){
+            
+            });
+
+  //});
+
      next();
    },articles.create)
 
+/*
+function postToCloud(data){
+ // var link = '';
+  
+
+ 
+
+}
+*/
   app.get('/articles/:id', articles.show);
   app.get('/articles/:id/edit', articleAuth, articles.edit);
   app.put('/articles/:id', articleAuth, articles.update);

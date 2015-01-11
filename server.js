@@ -13,7 +13,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var config = require('config');
-var io = require('./io');
+//var io = require('./io');
 
 //var io = require('socket.io');
 
@@ -22,7 +22,7 @@ var io = require('./io');
 var app = express();
 var port = process.env.PORT || 3000;
 var server = app.listen(port);
-io.attach(server);
+//io.attach(server);
 
 
 // Connect to mongodb

@@ -3,8 +3,8 @@ $(function() {
   
 
 
-  		  var socket = io();
- 
+  		  //var socket = io();
+  var socket = io("http://iocloud.localtunnel.me:80/ns2");
 
   	socket.on('new title', function (data) {
       console.log("data title is " + data.title);
