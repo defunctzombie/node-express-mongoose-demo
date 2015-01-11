@@ -13,9 +13,17 @@ var express = require('express');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var config = require('config');
+var io = require('./io');
+
+//var io = require('socket.io');
+
+
 
 var app = express();
 var port = process.env.PORT || 3000;
+var server = app.listen(port);
+io.attach(server);
+
 
 // Connect to mongodb
 var connect = function () {
@@ -26,6 +34,11 @@ connect();
 
 mongoose.connection.on('error', console.log);
 mongoose.connection.on('disconnected', connect);
+
+/*
+io.sockets.on('connection', function(socket){
+	socket.on()
+});*/
 
 // Bootstrap models
 fs.readdirSync(__dirname + '/app/models').forEach(function (file) {
@@ -41,7 +54,8 @@ require('./config/express')(app, passport);
 // Bootstrap routes
 require('./config/routes')(app, passport);
 
-app.listen(port);
+
+
 console.log('Express app started on port ' + port);
 
 /**

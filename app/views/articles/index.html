@@ -6,10 +6,15 @@
 
 {% block content %}
   {% if (articles.length) %}
+  <div id = "id1">
     {% for article in articles %}
+
       {% include 'article.html' %}
     {% endfor %}
 
+    </div>
+
+    This is a comment
     {% if (pages > 1) %}
       <ul class="pagination">
         {% autoescape false %}
@@ -23,4 +28,7 @@
       <a href="/articles/new">create one</a>
     </h4>
   {% endif %}
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/main.js"></script>
 {% endblock %}

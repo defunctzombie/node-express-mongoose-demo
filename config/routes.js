@@ -11,6 +11,7 @@ var articles = require('articles');
 var comments = require('comments');
 var tags = require('tags');
 var auth = require('./middlewares/authorization');
+var pubsub = require('../lib/pubsub');
 
 /**
  * Route middlewares
@@ -91,7 +92,19 @@ module.exports = function (app, passport) {
   app.param('id', articles.load);
   app.get('/articles', articles.index);
   app.get('/articles/new', auth.requiresLogin, articles.new);
-  app.post('/articles', auth.requiresLogin, articles.create);
+
+  app.post('/articles', auth.requiresLogin,  function(req, res, next){
+
+       var body = req.body;
+        console.log('posting data ' + body);
+        console.log({body: body});
+        console.log("title is " + body.title);
+        console.log("body is " + body.body);
+
+     pubsub.emit('message', body.title);
+     next();
+   },articles.create)
+
   app.get('/articles/:id', articles.show);
   app.get('/articles/:id/edit', articleAuth, articles.edit);
   app.put('/articles/:id', articleAuth, articles.update);

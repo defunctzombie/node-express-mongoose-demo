@@ -3,8 +3,11 @@
     <a href="{{ '/articles/' + article._id }}" title="{{ article.title }}">
       {{ article.title }}
     </a>
+
   </h3>
-  <p>{{ article.body }}</p>
+  <p class = "articalBody">{{ article.body }}</p>
+
+  <div> </div>
 
   <span class="muted">{{ article.createdAt.toISOString()|date('M d, Y  h:m a') }}</span>
 
@@ -25,4 +28,6 @@
       &nbsp;&nbsp;
     {% endfor %}
   {% endif %}
+ 
+
 </div>

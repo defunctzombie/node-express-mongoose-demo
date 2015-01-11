@@ -1,5 +1,4 @@
 {% extends '../layouts/default.html' %}
-
 {% block main %}
   <h1>{{ title }}</h1>
   <hr>
@@ -52,7 +51,7 @@
 
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <button class="btn btn-primary" type="submit">Save</button>
+            <button id = "saveButton" class="btn btn-primary" type="submit">Save</button>
             &nbsp;
             <a href="/articles" class="btn btn-link">Cancel</a>
           </div>
@@ -64,5 +63,15 @@
         <img src="{{ article.image.cdnUri + '/mini_' + article.image.files[0] }}" alt="">
       {% endif %}
     </div>
+    print this in form
   </div>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+
+      <script type="text/javascript">
+    
+
+    </script>
 {% endblock %}
