@@ -108,7 +108,7 @@ module.exports = function (app, passport) {
      var id = 'ns2';
   var type = 'new title';
 
-      request({ url: "http://iocloud.localtunnel.me/update",
+      request({ url: "http://localhost:3001/update",
             method: "POST",
             followRedirect: true,
             timeout: 5000,

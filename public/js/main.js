@@ -4,7 +4,9 @@ $(function() {
 
 
   		  //var socket = io();
-  var socket = io("http://iocloud.localtunnel.me:80/ns2");
+  var socket = io("http://localhost:3001/ns2");
+
+    console.dir("socket is ", socket);
 
   	socket.on('new title', function (data) {
       console.log("data title is " + data.title);
@@ -29,27 +31,6 @@ $(function() {
 
 
 
-         // console.log($id1);
-  		  	//${"id1"}.data(data);
-       // var x = document.createElement( data);
-      //  id1.addData(x);
-      //var x = document.querySelector("#id1")
-
-      /*x.innerHTML = x.innerHTML + data.tags;
-
-      x.innerHTML = x.innerHTML + data.body;
-
-      x.innerHTML = x.innerHTML + data.title;
-      */
-
-
-   /*   document.querySelector("#id1").prepend("this");
-      document.querySelector("#id1").prepend(data.body);
-      document.querySelector("#id1").prepend(data.title);
-      */
-
-
-       // x.append("<p>" + data + "</p>");
 
 
 
